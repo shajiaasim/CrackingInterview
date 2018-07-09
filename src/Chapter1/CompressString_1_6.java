@@ -10,17 +10,14 @@ public class CompressString_1_6 {
 	
 	static String compress(String word) {
 		StringBuilder compressedWord= new StringBuilder();
-		int letterCount=1;
+		int letterCount=0;
 		for (int i=0; i<word.length();i++) {
-			if(i==0) compressedWord.append(word.charAt(i));
-			else {
-				if(word.charAt(i)==word.charAt(i-1)) letterCount++;
-				else {
-					compressedWord.append(letterCount);
-					compressedWord.append(word.charAt(i));
-					letterCount=1;
-					
-				}
+			letterCount++;
+			
+			if (i+1==word.length()|| word.charAt(i)!=word.charAt(i+1)){
+			  compressedWord.append(word.charAt(i));
+			  compressedWord.append(letterCount);
+			  letterCount=0;
 			}
 		}
 		
